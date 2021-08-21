@@ -1,16 +1,24 @@
 require('dotenv').config();
-const cors = require('cors');
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileUpload'); //para cargar archivos
+
 const PORT = process.env.PORT;
 
-//Llamar la DB MONGO
+//calling mongoDB
 const connectMongo = require('./config/mongoDb');
 connectMongo();
 
+//middlewares
+app.use(fileUpload({useTempFiles:true})) //archivos temporales en lugar de memoria
+app.use(cookieParser());
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//Rutas
 //app.use(`/api`, require('./routes/products.routes'));
 
 app.listen(PORT, ()=>{
