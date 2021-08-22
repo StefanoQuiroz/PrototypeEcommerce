@@ -2,6 +2,7 @@ const User = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const {secretKey} = require("../config/jwt.config");
+const logout = require('express-passport-logout');
 
 const findUser = (req, res) => {
     User.find({})
@@ -28,7 +29,7 @@ const createUser = (req,res) => {
                 res.json({error: true, message:"El email ya se encuentra registrado"})
             } else {
                 User.create(req.body)
-                    .then(cuenta => res.json({data: cuenta}))
+                    .then(result => res.json({data: result}))
                     .catch(error => {
                         res.json({error: error, message:"Algo salió mal"});
                         res.sendStatus(500)
@@ -86,5 +87,15 @@ const login = (req, res) => {
         })
 }
 
-module.exports = {findUser, findSingleUser, createUser, updateUser, deleteUser, login};
+//fallo logout
+const logOut = async (req, res,next) => {
+    try{
+        res.clearCookie("session", {path: "/api"});
+        return res.json({message: "Log out"})
+    } catch(error){
+        return res.status(500).json({message:"Error al salir"});
+    }
+}
+
+module.exports = {findUser, findSingleUser, createUser, updateUser, deleteUser, login, logOut};
 
