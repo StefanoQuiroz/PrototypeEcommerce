@@ -17,16 +17,21 @@ const UserSchema = new mongoose.Schema({
     email :{ 
         type: String,
         required : [true, "Email obligatorio"],
-        trim: true //para eliminar los espacions en ambos lados
+        validate: {
+            validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
+            message: "Escriba un formato correcto como name@mail.com" 
+        },
+        unique: true //unique, porque el email es único al igual que su id
     },
     
     password :{ 
         type: String,
         required : [true, "Contraseña obligatoria"],
+        minlength: [6, "La contraseña debe tener al menos 6 carácteres"],
         trim: true //para eliminar los espacions en ambos lados
     },
     //rol usuario comun o administrador
-    role : {
+    rol : {
         type: Number,
         default: 0
     },
@@ -41,8 +46,8 @@ const UserSchema = new mongoose.Schema({
 
 //ConfirmPassword
 UserSchema.virtual("confirmPassword")
-    .get(() => this.confirmPassword)
-    .set(value => this.confirmPassword = value)
+    .get(() => this._confirmPassword)
+    .set(value => this._confirmPassword = value)
 
 UserSchema.pre("validate", function(next){
     if(this.password !== this.confirmPassword){
@@ -59,6 +64,6 @@ UserSchema.pre("save", function(next){
         });
 })
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('Users', UserSchema);
 
 module.exports = User;
