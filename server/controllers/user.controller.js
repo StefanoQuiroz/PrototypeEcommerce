@@ -2,7 +2,7 @@ const User = require("../models/user.models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const {secretKey} = require("../config/jwt.config");
-const logout = require('express-passport-logout');
+//const logout = require('express-passport-logout');
 
 const findUser = (req, res) => {
     User.find({})
