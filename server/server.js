@@ -19,7 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //Rutas
+////USER
 app.use(`/api`, require('./routes/user.routes'));
+////CATEGORY
+app.use(`/api`, require('./routes/category.routes'));
+
 
 app.listen(PORT, ()=>{
     console.log(` 1 : The server is lock and loading at PORT: ${PORT}`);

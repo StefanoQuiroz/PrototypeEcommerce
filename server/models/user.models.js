@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
     password :{ 
         type: String,
         required : [true, "Contraseña obligatoria"],
-        minlength: [6, "La contraseña debe tener al menos 6 carácteres"],
+        minlength: [5, "La contraseña debe tener al menos 5 carácteres"],
         trim: true //para eliminar los espacions en ambos lados
     },
     //rol usuario comun o administrador

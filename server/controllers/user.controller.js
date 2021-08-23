@@ -87,10 +87,10 @@ const login = (req, res) => {
         })
 }
 
-//fallo logout
-const logOut = async (req, res,next) => {
+//Logout
+const logOut = (req, res,next) => {
     try{
-        res.clearCookie("session", {path: "/api"});
+        res.clearCookie("usertoken", {path: '/'});
         return res.json({message: "Log out"})
     } catch(error){
         return res.status(500).json({message:"Error al salir"});
