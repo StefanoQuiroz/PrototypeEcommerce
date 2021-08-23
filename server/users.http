@@ -2,18 +2,19 @@
 GET http://localhost:8000/api/users
 
 ###GET A SINGE USER
-GET http://localhost:8000/api/user/6121a912514daa5fcc9ec18a
+GET http://localhost:8000/api/user/612336b95faec366d4402cc7
 
 ###CREATE A NEW USER
 POST http://localhost:8000/api/user/new
 Content-Type: application/json
 
 {
-    "firstName" : "Alberto",
-    "lastName" : "Queiroz",
-    "email" : "alberto@gmail.com", 
-    "password" : "1234",
-    "confirmPassword" : "1234"
+    "firstName" : "admin",
+    "lastName" : "admin",
+    "email" : "admin@gmail.com", 
+    "password" : "12345",
+    "confirmPassword" : "12345",
+    "rol": 1
 }
 
 ###UPDATE AN USER
@@ -29,15 +30,15 @@ Content-Type: application/json
 }
 
 ###DELETE AN USER
-DELETE http://localhost:8000/api/user/delete/612274c7beb1bd5a94ae1a98
+DELETE http://localhost:8000/api/user/delete/612335bc5faec366d4402cbe
 
 ###LOGIN
 POST http://localhost:8000/api/login
 Content-Type: application/json
 
 {
-    "email" : "stefano@gmail.com",
-    "password": "123456"
+    "email" : "admin@gmail.com",
+    "password": "12345"
 }
 ###lOGOUT
 GET http://localhost:8000/api/logout
