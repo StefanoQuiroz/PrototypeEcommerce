@@ -1,2 +1,5 @@
 ### GET CATEGORY
-GET http://localhost:8000/api/category
+GET http://localhost:8000/cat/category
+
+### CREATE CATEGORY
+POST http://localhost:8000/cat/category/create
