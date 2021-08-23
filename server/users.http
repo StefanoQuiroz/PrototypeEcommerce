@@ -1,0 +1,46 @@
+###GET ALL USERS
+GET http://localhost:8000/api/users
+
+###GET A SINGE USER
+GET http://localhost:8000/api/user/6121a912514daa5fcc9ec18a
+
+###CREATE A NEW USER
+POST http://localhost:8000/api/user/new
+Content-Type: application/json
+
+{
+    "firstName" : "Alberto",
+    "lastName" : "Queiroz",
+    "email" : "alberto@gmail.com", 
+    "password" : "1234",
+    "confirmPassword" : "1234"
+}
+
+###UPDATE AN USER
+PUT http://localhost:8000/api/user/update/6121a912514daa5fcc9ec18a
+Content-Type: application/json
+
+{
+    "firstName" : "Alberto",
+    "lastName" : "Queiroz",
+    "email" : "alberto@gmail.com", 
+    "password" : "1234",
+    "confirmPassword" : "1234"
+}
+
+###DELETE AN USER
+DELETE http://localhost:8000/api/user/delete/612274c7beb1bd5a94ae1a98
+
+###LOGIN
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email" : "stefano@gmail.com",
+    "password": "123456"
+}
+###lOGOUT
+GET http://localhost:8000/api/logout
+#####################################################################################################
+###PRODUCTS ACTIONS
+#####################################################################################################
