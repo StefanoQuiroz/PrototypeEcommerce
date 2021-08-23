@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended: true}));
 ////USER
 app.use(`/api`, require('./routes/user.routes'));
 ////CATEGORY
-app.use(`/api`, require('./routes/category.routes'));
+app.use(`/cat`, require('./routes/category.routes'));
 
 
 app.listen(PORT, ()=>{
