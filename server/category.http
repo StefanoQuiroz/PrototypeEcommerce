@@ -1,0 +1,2 @@
+### GET CATEGORY
+GET http://localhost:8000/api/category
