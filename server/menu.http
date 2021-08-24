@@ -9,8 +9,8 @@ POST http://localhost:8000/api/menu/new
 Content-Type: application/json
 
 {
-    "name" : "Arroz con Leche 2",
-    "description" : "Arroz dulce con leche condensada",
+    "name" : "Suspiro a la limeña",
+    "description" : "Suspiro",
     "category" : "Postre", 
     "price" : 3.99,
     //image tiene un object que es el objeto public_id y url cuando añadimos una imagen a cloudinary

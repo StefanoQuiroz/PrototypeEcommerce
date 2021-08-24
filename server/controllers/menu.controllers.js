@@ -1,7 +1,7 @@
 const Menu = require("../models/menu.models");
 
 const findMenu = (req, res) => {
-    Menu.find({})
+    Menu.find({}).sort({date: -1})
         .then(result => res.json({data: result}))
         .catch(error => {
             res.json({error:error, message:"Algo salió mal en el menu"})

@@ -20,7 +20,7 @@ const MenuSchema = new mongoose.Schema({
     },
     image: {
         type: Object,
-        required: [true, "Este campo es obligatorio"]
+        //descomentarlo por mientras required: [true, "Este campo es obligatorio"]
     },
     status: { //checked
         type: Boolean,
@@ -29,6 +29,10 @@ const MenuSchema = new mongoose.Schema({
     prepared: { //sold
         type: Number,
         default: 0
+    },
+    date : {
+        type: Date,
+        default: Date.now()
     }
 
 }, {timestamps: true});
