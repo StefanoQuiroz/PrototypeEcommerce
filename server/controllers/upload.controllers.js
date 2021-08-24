@@ -24,7 +24,7 @@ const  upLoading = (req, res) => {
             } else {
                 //res.json({message: result});
                 removeTmp(file.tempFilePath);
-                res.json({public_id: result.public_id, url: result.url});
+                res.json({public_id: result.public_id, url: result.secure_url});
             }
         })
     } catch(error) {
