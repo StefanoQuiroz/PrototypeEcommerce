@@ -21,6 +21,8 @@ app.use(express.urlencoded({extended: true}));
 //Rutas
 ////USER
 app.use(`/api`, require('./routes/user.routes'));
+////CLOUDINARY
+app.use(`/api`, require('./routes/upload.routes'));
 ////CATEGORY
 app.use(`/cat`, require('./routes/category.routes'));
 
