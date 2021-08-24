@@ -1,6 +1,7 @@
 const cloudinary = require('../config/cloudinary.config');
 const fs = require("fs"); //nos permite hacer un CRUD de los archivos
 
+//Funcion para enviar imagenes a cloudinary
 const  upLoading = (req, res) => {
     try{
         console.log(req.files);
@@ -27,11 +28,31 @@ const  upLoading = (req, res) => {
             }
         })
     } catch(error) {
-        res.json({message: "Error al subir imagen a cloudinary"})
-        res.sendStatus(500);
+        return res.json({message: "Error al subir imagen a cloudinary"}).status(500);
     }
 }
 
+//funcion para borrar imagenes de cloudinary
+
+const deleteImages = (req, res) => {
+    try{
+        const {public_id} = req.body;
+        if(!public_id){
+            return res.json({message: "Ninguna imagen seleccionada"}).status(400);
+        }
+        cloudinary.v2.uploader.destroy(public_id, async(error, result) => {
+            if(error){
+                console.log(error);
+            } else {
+                res.json({message: "Imagen borrada"});
+            }
+        })
+    } catch(error){
+        return res.json({message: "Algo salió mal al borrar imágenes"})
+    }
+}
+
+//Eliminar los archivos dentro de la carpeta tmp
 const removeTmp = (path) => {//fs.unlink() para eliminar archivos de forma nativa en JS
     fs.unlink(path, error => {
         if(error){
@@ -40,4 +61,4 @@ const removeTmp = (path) => {//fs.unlink() para eliminar archivos de forma nativ
     })
 }
 
-module.exports = {upLoading};
+module.exports = {upLoading, deleteImages};
